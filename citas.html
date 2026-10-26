@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"="width=device=width,initial-scale=1.0">
+    <title> Healty Pets Clinica Veterinaria 2</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+   
+    <main>
+            <div class="form-nueva-cita">
+                <form>
+                <label for="input-paciente">ingrese el nombre del paciente</label><br>
+            <input type="text" id="input-paciente" placeholder="Nombre del paciente">
+            <br>
+              <label for="input-hora">ingresa la hora</label><br>
+            <input type="text" id="input-hora" placeholder="hora, ej. 14:00">
+            <br>
+            <label for="input-Mascota">ingresa la mascota</label><br>
+            <input type="text" id="input-mascota" placeholder="Nombre de la Mascota">
+            <br>
+            <!-- En tu archivo HTML -->
+            <button type="button" id="boton-agregar">Agregar cita.....</button>
+            </form>
+        </div>
+            <!-- Primera vez casilla de verificación-->
+             <div id="lista-citas-dinamica"></div>
+            <!--Genrar cita-->
+</main>
+        
+    <script>
+        const citasDinamicas = [
+            { paciente: "Sofia Ramirez", hora: "13:00", mascota:"pepito"},
+            { paciente: "Malena Garcia", hora: "12:00", mascota:"juan"},
+            { paciente: "Sara Ramirez", hora: "13:00", mascota:"perro"},
+            { paciente: "Samanta sanches", hora: "13:00", mascota:"pinto"},
+            { paciente: "Dana Ramirez",  hora: "14:00", mascota:"pulgas"}
+        ];
+         const formatearCita = (cita, indice) => { // funcion= formateraCita, indice es la posición del elemento dentro del arreglo
+        //class="boton-eliminar" le da una clase al botón para que más adelante JavaScript sepa cuál botón fue presionando
+        //data-index="' + indice + '" guarda dentro del botón la posición que ocupa esa cita dentro del arreglo
+        return "<p>" + cita.paciente + " " + cita.hora + " " + cita.mascota +
+        ' <button class="boton-eliminar" data-index="' + indice + '">Eliminar</button></p>';
+        }
+
+        let html = "";
+        citasDinamicas.forEach(function (cita, i) {
+        html += formatearCita(cita, i);
+        });
+        document.getElementById("lista-citas-dinamica").innerHTML = html;
+       
+
+            const boton=document.getElementById("boton-agregar");
+            boton.addEventListener("click", (evento) => {
+            evento.preventDefault(); 
+            const paciente= document.getElementById("input-paciente").value;
+            const hora= document.getElementById("input-hora").value;
+            const mascota= document.getElementById("input-mascota").value;
+
+            if(paciente==="" || hora==="" || mascota===""){
+                alert("llena todos los campos");
+                return;
+            }
+
+            citasDinamicas.push({ paciente: paciente, hora: hora, mascota: mascota });
+
+            let htmlActualizado = "";
+            citasDinamicas.forEach((cita, i) => {
+            htmlActualizado += formatearCita(cita, i);
+            });
+
+            document.getElementById("lista-citas-dinamica").innerHTML = htmlActualizado;  
+            document.getElementById("input-paciente").value="";
+            document.getElementById("input-hora").value="";
+            document.getElementById("input-mascota").value="";
+        });
+        //buscamos en el HTML lo q guarda todas las citas (lista-citas-dinamica) y le agregamos un escuchador para detectar cualquier clic que ocurra dentro
+        //la variable evento guarda la información de a qué elemento se le dio clic.
+        document.getElementById("lista-citas-dinamica").addEventListener("click", (evento) => {
+        if (evento.target.classList.contains("boton-eliminar")) {
+        //leemos el valor del atributo, de ese botón para saber qué número de posición en el arreglo vamos a borrar
+        const indice = evento.target.getAttribute("data-index");
+        
+        //elimina la cita del arreglo()
+        citasDinamicas.splice(indice, 1); //metodo splice
+        //el primer parámetro indica la posición que queremos borrar y el 1 le dice que solo elimine SEL
+
+        //lo acomoda con las citas restantes
+        let htmlActualizado = "";
+        citasDinamicas.forEach((cita, i) => {
+            htmlActualizado += formatearCita(cita, i);
+        });
+
+        //muestra en pantalla la lista actualizada sin la cita eliminada
+        document.getElementById("lista-citas-dinamica").innerHTML = htmlActualizado;
+        }
+        });
+    </script>
+</body>
+
+</html>

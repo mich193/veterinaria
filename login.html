@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Healthy Pets</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Carga FontAwesome para los íconos de usuario, candado y ojo -->
+  
+</head>
+<body>
+
+  <div class="login-container">
+    <!-- Lado Izquierdo: Branding, Logo e Ilustración -->
+    <div class="login-brand">
+      <div class="logo-area">
+        
+        <div class="ilustracion">
+        <img src="logo-V.png" alt="Veterinaria Healthy Pets" class="mi-imagen-login">
+        </div>
+        <h1>Healthy Pets</h1>
+        <p class="subtitulo-brand">Clínica Veterinaria</p>
+      </div>
+      <div class="ilustracion">
+        <!-- Ícono decorativo tipo mascota -->
+        <i class="fa-solid fa-dog mascota-icon"></i>
+        <i class="fa-solid fa-cat mascota-icon"></i>
+      </div>
+    </div>
+
+    <!-- Lado Derecho: Tarjeta con Formulario de Login -->
+    <div class="login-card">
+      <h2>Iniciar sesión</h2>
+
+        <form action="index.html" method="GET" class="login-form">
+        <!-- Campos de usuario y contraseña -->
+  
+        
+        
+        <!-- Campo Usuario -->
+        <div class="input-icon-group">
+          <i class="fa-regular fa-user icon"></i>
+          <input type="text" placeholder="Usuario" required>
+        </div>
+
+        <!-- Campo Contraseña -->
+        <div class="input-icon-group">
+          <i class="fa-solid fa-lock icon"></i>
+          <input type="password" placeholder="Contraseña" required>
+          <i class="fa-regular fa-eye toggle-password"></i>
+        </div>
+
+        <!-- Opciones adicionales -->
+        <div class="login-options">
+          
+          </label>
+          <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <!-- Botón Iniciar Sesión -->
+        <button type="submit"  onclick="window.location.href='index.html'"  class="btn-primary">Iniciar sesión</button>
+
+        <div class="divider"></div>
+
+       <!-- Opción Registrarse -->
+        <p class="signup-text">¿No tienes cuenta?</p>
+        <a href="registro.html" class="btn-secondary">Registrarse</a>
+
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

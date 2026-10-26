@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Pets - Agendar Cita</title>
+    <!-- Iconos de Boxicons para las opciones del menú -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+    <!--BARRA LATERAL (SIDEBAR)-->
+    <aside class="sidebar">
+        <div class="logo-container">
+            <img src="logo-V.png" alt="Logo Veterinaria" class="logo-img">
+            <div class="logo-text">
+                <h2>Healthy Pets</h2>
+                <span>Clínica Veterinaria</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="login.html">
+                        <i class='bx bx-home-alt-2'></i>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="citas.html">
+                        <i class='bx bx-calendar-plus'></i>
+                        <span>Agendar cita</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="citas.html">
+                        <i class='bx bx-list-ul'></i>
+                        <span>Mis citas</span>
+                    </a>
+                </li>
+                <li>
+                    <!--<a href="citas.html">-->
+                        <i class='bx bx-list-ul'></i>
+                        <span>Perfil</span>
+                    <!--</a>-->
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!--CONTENIDO PRINCIPAL-->
+    <div class="main-content">
+        <!-- BARRA SUPERIOR USUARIO -->
+        <header class="top-header">
+            <div class="user-profile">
+                <i class='bx bx-user-circle'></i>
+                <span>Usuario</span>
+            </div>
+        </header>
+
+        <!-- FORMULARIO BUENO DE CITAS -->
+        <main class="cites">
+            <h2>Agendar tu Cita</h2>
+            <p class="subtitulo">Completa los datos para registrar una nueva cita</p>
+              <div class="form-nueva-cita">
+            <form class="formulario-grid">
+                <!-- Columna Izquierda -->
+                <div class="grupo-campo">
+                    <label for="dueno">Nombre del dueño</label>
+                    <input type="text" id="dueno" placeholder="Nombre completo" required>
+                </div>
+
+                <!-- Columna Derecha -->
+                <div class="grupo-campo">
+                    <label for="motivo">Motivo de la consulta</label>
+                    <select id="motivo">
+                        <option value="" disabled selected>Selecciona el motivo</option>
+                        <option value="urgencia">Urgencia</option>
+                        <option value="general">General</option>
+                        <option value="vacunacion">Vacunación</option>
+                        <option value="desparasitacion">Desparasitación</option>
+                    </select>
+                </div>
+
+                <!-- Columna Izquierda -->
+                <div class="grupo-campo">
+                    <label for="mascota">Nombre de la mascota</label>
+                    <input type="text" id="mascota" placeholder="Nombre" required>
+                </div   >
+
+                <!-- Columna Derecha -->
+                <div class="grupo-campo">
+                    <label for="fecha">Fecha</label>
+                    <input type="date" id="fecha">
+                </div>
+
+                <!-- Columna Izquierda -->
+                <div class="grupo-campo">
+                    <label for="especie">Especie</label>
+                    <input type="text" id="especie" placeholder="Especie" required>
+                </div>
+
+                <!-- Columna Derecha -->
+                <div class="grupo-campo">
+                    <label for="hora">Hora</label>
+                    <input type="time" id="hora">
+                </div>
+
+                <!-- Columna Izquierda -->
+                <div class="grupo-campo">
+                    <label for="raza">Raza</label>
+                    <input type="text" id="raza" placeholder="Raza_Mascota">
+                </div>
+
+                <!--aqui hay pedos con el li de span-->
+                <div class="grupo-campo campo-boton">
+                    
+                    <form class="formulario-grid" action="citaex.html"></form>
+                    <button type="submit"  onclick="window.location.href='citaex.html'"  
+                    class="btn-primary">Agendar Cita</button> <!--este es el chido-->
+                </div>
+            </form>
+            </div>
+
+             <!-- Primera vez casilla de verificación-->
+             <div id="lista-citas-dinamica"></div>
+            <!--Genrar cita-->
+        </main>
+        <script>
+            const citasDinamicas = [
+             ];
+        //Función para formatear cada cita en el HTML
+        const formatearCita = (cita, indice) => {
+        return `
+        <p>
+          <strong>Dueño:</strong> ${cita.dueno} - 
+          <strong>Motivo:</strong> ${cita.motivo} - 
+          <strong>Mascota:</strong> ${cita.mascota} - 
+          <strong>Fecha:</strong> ${cita.fecha} - 
+          <strong>Especie:</strong> ${cita.especie} - 
+          <strong>Hora:</strong> ${cita.hora} - 
+          <strong>Raza:</strong> ${cita.raza}
+          <button class="boton-eliminar" data-indice="${indice}">Eliminar</button>
+        </p>
+         `;
+        };
+
+        //Renderizar las citas iniciales en pantalla
+        let html = "";
+        citasDinamicas.forEach((cita, i) => {
+        html += formatearCita(cita, i);
+        });
+        document.getElementById('lista-citas-dinamica').innerHTML = html;
+
+        //Capturar el evento del botón de enviar / agregar cita
+        const boton = document.querySelector('.formulario-grid button[type="submit"]');
+
+        if (boton) {
+        boton.addEventListener('click', (evento) => {
+        evento.preventDefault();
+
+        //Capturar los valores usando los nuevos IDs de tu formulario
+        const dueno = document.getElementById('dueno').value;
+        const motivo = document.getElementById('motivo').value;
+        const mascota = document.getElementById('mascota').value;
+        const fecha = document.getElementById('fecha').value;
+        const especie = document.getElementById('especie').value;
+        const hora = document.getElementById('hora').value;
+        const raza = document.getElementById('raza').value;
+
+        // Validación sencilla para asegurar que los campos principales no estén vacíos
+        if (!dueno || !mascota || !fecha || !hora) {
+            alert("Por favor, llena los campos obligatorios principales.");
+            return;
+        }
+
+        // Agregar la nueva cita al arreglo
+        citasDinamicas.push({ dueno, motivo, mascota, fecha, especie, hora, raza });
+
+        // Actualizar la vista del listado en pantalla
+        let htmlActualizado = "";
+        citasDinamicas.forEach((cita, i) => {
+            htmlActualizado += formatearCita(cita, i);
+        });
+        document.getElementById('lista-citas-dinamica').innerHTML = htmlActualizado;
+
+        //limpiar el formulario después de agregar
+        document.querySelector('.formulario-grid').reset();
+     });
+    }
+
+            //Escucha global para eliminar citas de manera dinámica
+            document.getElementById('lista-citas-dinamica').addEventListener('click', (evento) => {
+            if (evento.target.classList.contains('boton-eliminar')) {
+            const indice = evento.target.getAttribute('data-indice');
+        
+        // Eliminar del arreglo
+        citasDinamicas.splice(indice, 1);
+
+        // Reconstruir la lista en pantalla
+        let htmlActualizado = "";
+        citasDinamicas.forEach((cita, i) => {
+            htmlActualizado += formatearCita(cita, i);
+        });
+        document.getElementById('lista-citas-dinamica').innerHTML = htmlActualizado;
+     }
+    });
+</script>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Pets - Cita Agendada</title>
+    <!-- Iconos de Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+    <!--barra lateral SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo-container">
+            <img src="veterinaria.png" alt="Logo Veterinaria" class="logo-img">
+            <div class="logo-text">
+                <h2>Healthy Pets</h2>
+                <span>Clínica Veterinaria</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <i class='bx bx-home-alt-2'></i>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="index.html">
+                        <i class='bx bx-calendar-plus'></i>
+                        <span>Agendar cita</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-list-ul'></i>
+                        <span>Mis citas</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!--CONTENIDO PRINCIPAL-->
+    <div class="main-content">
+        <!-- BARRA SUPERIOR USUARIO -->
+        <header class="top-header">
+            <div class="user-profile">
+                <i class='bx bx-user-circle'></i>
+                <span>Usuario</span>
+            </div>
+        </header>
+
+        <!-- TARJETA DE CONFIRMACIÓN DE CITA -->
+        <main class="success-container">
+            <div class="success-card">
+                <!-- icono para checar es el verde -->
+                <div class="check-circle">
+                    <i class='bx bx-check'></i>
+                </div>
+
+                <h2>¡Cita agendada!</h2>
+                <p class="success-message">La cita ha sido registrada exitosamente.</p>
+
+                <!-- Botón Ir al Inicio -->
+                <a href="citas.html" class="btn-success">Mis citas</a>
+                <form class="formulario-grid" action="citaex.html"></form>
+            </div>
+        </main>
+    </div>
+</div>
+
+</body>
+</html>
