@@ -1,0 +1,147 @@
+/* --- Contenedor general de la sección de citas --- */
+.citas-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  background-color: #f7f1f2;
+  min-height: 85vh;
+}
+
+/* --- Tarjeta Individual de Detalle de Cita --- */
+.cita-card-detalle {
+  background: #ffffff;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  margin-bottom: 25px;
+  border: 1px solid #eee;
+}
+
+/* --- Cabecera de la Tarjeta --- */
+.cita-header-bar {
+  background-color: #8c4a53; /* Color vino corporativo */
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* --- Cuerpo de la Tarjeta --- */
+.cita-body {
+  padding: 25px;
+}
+
+.cita-info-top {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 20px;
+}
+
+.pet-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #e2d1d4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  object-fit: cover;
+}
+
+.pet-main-info h3 {
+  margin: 0 0 5px 0;
+  color: #333;
+  font-size: 1.4rem;
+}
+
+.pet-main-info p {
+  margin: 0;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.badge-confirmada {
+  margin-left: auto;
+  background-color: #e8f5e9;
+  color: #4caf50;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* --- Filas de Detalles --- */
+.cita-detail-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.cita-detail-row span.label {
+  width: 130px;
+  color: #666;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cita-detail-row span.value {
+  color: #333;
+  font-weight: 600;
+}
+
+/* --- Botones de Acción (Editar / Cancelar) --- */
+.cita-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.btn-accion {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-editar {
+  background-color: #ffffff;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.btn-editar:hover {
+  background-color: #f9f9f9;
+}
+
+.btn-cancelar {
+  background-color: #ffffff;
+  color: #d32f2f;
+  border: 1px solid #f5c6cb;
+}
+
+.btn-cancelar:hover {
+  background-color: #fff5f5;
+}

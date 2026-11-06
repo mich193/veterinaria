@@ -2,29 +2,26 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Healthy Pets</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Carga FontAwesome para los íconos de usuario, candado y ojo -->
-  
+  <title>Iniciar Sesión - Healthy Pets</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/login.css">
+  <!-- Iconos de FontAwesome y Boxicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
   <div class="login-container">
-    <!-- Lado Izquierdo: Branding, Logo e Ilustración -->
+    <!-- Lado Izquierdo: Branding y Logo -->
     <div class="login-brand">
       <div class="logo-area">
-        
-        <div class="ilustracion">
-        <img src="logo-V.png" alt="Veterinaria Healthy Pets" class="mi-imagen-login">
+        <div class="paw-icon-top">
+          <i class="fa-solid fa-paw"></i>
         </div>
-        <h1>Healthy Pets</h1>
-        <p class="subtitulo-brand">Clínica Veterinaria</p>
+        <h1>Healthy Pets Clinica Veterinaria</h1>
+        <p class="subtitulo-brand">¡Bienvenidos!</p>
       </div>
-      <div class="ilustracion">
-        <!-- Ícono decorativo tipo mascota -->
-        <i class="fa-solid fa-dog mascota-icon"></i>
-        <i class="fa-solid fa-cat mascota-icon"></i>
+      <div class="ilustracion-mascotas">
+        <img src="logo-V.png" alt="Veterinaria Healthy Pets" class="mi-imagen-login">
       </div>
     </div>
 
@@ -32,11 +29,7 @@
     <div class="login-card">
       <h2>Iniciar sesión</h2>
 
-        <form action="index.html" method="GET" class="login-form">
-        <!-- Campos de usuario y contraseña -->
-  
-        
-        
+      <form action="index.html" method="GET" class="login-form">
         <!-- Campo Usuario -->
         <div class="input-icon-group">
           <i class="fa-regular fa-user icon"></i>
@@ -50,22 +43,22 @@
           <i class="fa-regular fa-eye toggle-password"></i>
         </div>
 
-        <!-- Opciones adicionales -->
+        <!-- Opciones adicionales: Recordar usuario y Contraseña -->
         <div class="login-options">
-          
+          <label>
+            <input type="checkbox"> Recordar usuario
           </label>
           <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
         </div>
 
         <!-- Botón Iniciar Sesión -->
-        <button type="submit"  onclick="window.location.href='index.html'"  class="btn-primary">Iniciar sesión</button>
-
+        <button type="submit" class="btn-primary">Iniciar sesión</button>
+        
         <div class="divider"></div>
 
-       <!-- Opción Registrarse -->
+        <!-- Opción Registrarse -->
         <p class="signup-text">¿No tienes cuenta?</p>
         <a href="registro.html" class="btn-secondary">Registrarse</a>
-
       </form>
     </div>
   </div>

@@ -1,106 +1,134 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
-    <meta name="viewport"="width=device=width,initial-scale=1.0">
-    <title> Healty Pets Clinica Veterinaria 2</title>
-
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Pets - Mis Citas</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/citas.css">
 </head>
-
 <body>
-   
-    <main>
-            <div class="form-nueva-cita">
-                <form>
-                <label for="input-paciente">ingrese el nombre del paciente</label><br>
-            <input type="text" id="input-paciente" placeholder="Nombre del paciente">
-            <br>
-              <label for="input-hora">ingresa la hora</label><br>
-            <input type="text" id="input-hora" placeholder="hora, ej. 14:00">
-            <br>
-            <label for="input-Mascota">ingresa la mascota</label><br>
-            <input type="text" id="input-mascota" placeholder="Nombre de la Mascota">
-            <br>
-            <!-- En tu archivo HTML -->
-            <button type="button" id="boton-agregar">Agregar cita.....</button>
-            </form>
+
+<div class="app-container">
+    <!-- Barra Lateral -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <img src="logo-V.png" alt="Logo Veterinaria">
+            <div>
+                <h1>Healthy Pets</h1>
+                <span>Clínica Veterinaria</span>
+            </div>
         </div>
-            <!-- Primera vez casilla de verificación-->
-             <div id="lista-citas-dinamica"></div>
-            <!--Genrar cita-->
-</main>
-        
-    <script>
-        const citasDinamicas = [
-            { paciente: "Sofia Ramirez", hora: "13:00", mascota:"pepito"},
-            { paciente: "Malena Garcia", hora: "12:00", mascota:"juan"},
-            { paciente: "Sara Ramirez", hora: "13:00", mascota:"perro"},
-            { paciente: "Samanta sanches", hora: "13:00", mascota:"pinto"},
-            { paciente: "Dana Ramirez",  hora: "14:00", mascota:"pulgas"}
-        ];
-         const formatearCita = (cita, indice) => { // funcion= formateraCita, indice es la posición del elemento dentro del arreglo
-        //class="boton-eliminar" le da una clase al botón para que más adelante JavaScript sepa cuál botón fue presionando
-        //data-index="' + indice + '" guarda dentro del botón la posición que ocupa esa cita dentro del arreglo
-        return "<p>" + cita.paciente + " " + cita.hora + " " + cita.mascota +
-        ' <button class="boton-eliminar" data-index="' + indice + '">Eliminar</button></p>';
-        }
 
-        let html = "";
-        citasDinamicas.forEach(function (cita, i) {
-        html += formatearCita(cita, i);
-        });
-        document.getElementById("lista-citas-dinamica").innerHTML = html;
-       
+       <nav class="sidebar-nav">
+    <!-- El botón de Inicio ahora redirige al login -->
+   <nav class="sidebar-nav">
+        <a href="login.html" class="nav-item">
+          <i class='fa-solid fa-house'></i> <span>Inicio</span>
+        </a>
+        <a href="index.html" class="nav-item active">
+          <i class='fa-regular fa-calendar-days'></i> <span>Agendar cita</span>
+        </a>
+        <a href="citas.html" class="nav-item">
+          <i class='fa-solid fa-bars'></i> <span>Mis citas</span>
+        </a>
+        <a href="perfil.html" class="nav-item">
+          <i class='fa-regular fa-user'></i> <span>Perfil</span>
+        </a>
+      </nav>
+    </aside>
 
-            const boton=document.getElementById("boton-agregar");
-            boton.addEventListener("click", (evento) => {
-            evento.preventDefault(); 
-            const paciente= document.getElementById("input-paciente").value;
-            const hora= document.getElementById("input-hora").value;
-            const mascota= document.getElementById("input-mascota").value;
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <header class="top-header">
+            <div class="user-profile"><span>👤 Usuario</span></div>
+        </header>
 
-            if(paciente==="" || hora==="" || mascota===""){
-                alert("llena todos los campos");
-                return;
-            }
+        <div class="form-container-wrapper" style="padding: 40px;">
+            <h2>Mis Citas Registradas</h2>
+            <p>Aquí podrás visualizar el historial de las citas de tus mascotas.</p>
+            <!-- Contenedor del listado -->
+            <div id="lista-citas" style="background: white; padding: 20px; border-radius: 12px; margin-top: 20px;">
+                <p>No hay citas registradas todavía.</p>
+            </div>
+        </div>
+    </main>
+</div>
 
-            citasDinamicas.push({ paciente: paciente, hora: hora, mascota: mascota });
-
-            let htmlActualizado = "";
-            citasDinamicas.forEach((cita, i) => {
-            htmlActualizado += formatearCita(cita, i);
-            });
-
-            document.getElementById("lista-citas-dinamica").innerHTML = htmlActualizado;  
-            document.getElementById("input-paciente").value="";
-            document.getElementById("input-hora").value="";
-            document.getElementById("input-mascota").value="";
-        });
-        //buscamos en el HTML lo q guarda todas las citas (lista-citas-dinamica) y le agregamos un escuchador para detectar cualquier clic que ocurra dentro
-        //la variable evento guarda la información de a qué elemento se le dio clic.
-        document.getElementById("lista-citas-dinamica").addEventListener("click", (evento) => {
-        if (evento.target.classList.contains("boton-eliminar")) {
-        //leemos el valor del atributo, de ese botón para saber qué número de posición en el arreglo vamos a borrar
-        const indice = evento.target.getAttribute("data-index");
-        
-        //elimina la cita del arreglo()
-        citasDinamicas.splice(indice, 1); //metodo splice
-        //el primer parámetro indica la posición que queremos borrar y el 1 le dice que solo elimine SEL
-
-        //lo acomoda con las citas restantes
-        let htmlActualizado = "";
-        citasDinamicas.forEach((cita, i) => {
-            htmlActualizado += formatearCita(cita, i);
-        });
-
-        //muestra en pantalla la lista actualizada sin la cita eliminada
-        document.getElementById("lista-citas-dinamica").innerHTML = htmlActualizado;
-        }
-        });
-    </script>
 </body>
-
 </html>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const contenedor = document.getElementById("contenedor-mis-citas");
+    const citasGuardadas = JSON.parse(localStorage.getItem("citasGuardadas")) || [];
+
+    if (citasGuardadas.length === 0) {
+      contenedor.innerHTML = `<p style="text-align: center; color: #666; padding: 20px;">No hay citas registradas todavía.</p>`;
+      return;
+    }
+
+    contenedor.innerHTML = ""; // Limpiar contenedor
+
+    citasGuardadas.forEach((cita, index) => {
+      const tarjeta = document.createElement("div");
+      tarjeta.className = "cita-card-detalle";
+
+      tarjeta.innerHTML = `
+        <div class="cita-header-bar">
+          <span>Detalle de Cita</span>
+          <span>#0${index + 1}</span>
+        </div>
+        <div class="cita-body">
+          <div class="cita-info-top">
+            <div class="pet-avatar">🐶</div>
+            <div class="pet-main-info">
+              <h3>${cita.mascota}</h3>
+              <p>${cita.especie} - ${cita.raza || 'No especificada'}</p>
+            </div>
+            <span class="badge-confirmada">Confirmada</span>
+          </div>
+
+          <div class="cita-detail-row">
+            <span class="label">👤 Dueño:</span>
+            <span class="value">${cita.dueno}</span>
+          </div>
+          <div class="cita-detail-row">
+            <span class="label">🐾 Especie:</span>
+            <span class="value">${cita.especie}</span>
+          </div>
+          <div class="cita-detail-row">
+            <span class="label">🐕 Raza:</span>
+            <span class="value">${cita.raza || 'N/A'}</span>
+          </div>
+          <div class="cita-detail-row">
+            <span class="label">📋 Motivo:</span>
+            <span class="value">${cita.motivo}</span>
+          </div>
+          <div class="cita-detail-row">
+            <span class="label">📅 Fecha:</span>
+            <span class="value">${cita.fecha}</span>
+          </div>
+          <div class="cita-detail-row">
+            <span class="label">🕒 Hora:</span>
+            <span class="value">${cita.hora}</span>
+          </div>
+
+          <div class="cita-actions">
+            <button class="btn-accion btn-editar" onclick="alert('Editar cita próximamente')">✏️ Editar</button>
+            <button class="btn-accion btn-cancelar" onclick="eliminarCita(${index})">🗑️ Cancelar</button>
+          </div>
+        </div>
+      `;
+      contenedor.appendChild(tarjeta);
+    });
+  });
+
+  function eliminarCita(index) {
+    if (confirm("¿Estás seguro de cancelar esta cita?")) {
+      let citasGuardadas = JSON.parse(localStorage.getItem("citasGuardadas")) || [];
+      citasGuardadas.splice(index, 1);
+      localStorage.setItem("citasGuardadas", JSON.stringify(citasGuardadas));
+      location.reload();
+    }
+  }
+</script>

@@ -4,74 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Healthy Pets - Cita Agendada</title>
-    <!-- Iconos de Boxicons -->
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/citaex.css">
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
 <div class="app-container">
-    <!--barra lateral SIDEBAR -->
+    <!-- Barra Lateral (Sidebar) -->
     <aside class="sidebar">
-        <div class="logo-container">
-            <img src="veterinaria.png" alt="Logo Veterinaria" class="logo-img">
-            <div class="logo-text">
+        <div class="sidebar-logo">
+            <div class="paw-icon-top"><i class="fa-solid fa-paw"></i></div>
+            <div>
                 <h2>Healthy Pets</h2>
                 <span>Clínica Veterinaria</span>
             </div>
         </div>
 
         <nav class="sidebar-nav">
-            <ul>
-                <li>
-                    <a href="index.html">
-                        <i class='bx bx-home-alt-2'></i>
-                        <span>Inicio</span>
-                    </a>
-                </li>
-                <li class="active">
-                    <a href="index.html">
-                        <i class='bx bx-calendar-plus'></i>
-                        <span>Agendar cita</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class='bx bx-list-ul'></i>
-                        <span>Mis citas</span>
-                    </a>
-                </li>
-            </ul>
+            <a href="login.html" class="nav-item">
+                <i class='fa-solid fa-house'></i> <span>Inicio</span>
+            </a>
+            <a href="index.html" class="nav-item">
+                <i class='fa-regular fa-calendar-days'></i> <span>Agendar cita</span>
+            </a>
+            <a href="citas.html" class="nav-item">
+                <i class='fa-solid fa-bars'></i> <span>Mis citas</span>
+            </a>
+            <a href="perfil.html" class="nav-item">
+                <i class='fa-regular fa-user'></i> <span>Perfil</span>
+            </a>
         </nav>
     </aside>
 
-    <!--CONTENIDO PRINCIPAL-->
-    <div class="main-content">
-        <!-- BARRA SUPERIOR USUARIO -->
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <!-- Barra Superior -->
         <header class="top-header">
             <div class="user-profile">
-                <i class='bx bx-user-circle'></i>
-                <span>Usuario</span>
+                <i class='fa-regular fa-user'></i> Usuario
             </div>
         </header>
 
-        <!-- TARJETA DE CONFIRMACIÓN DE CITA -->
-        <main class="success-container">
+        <!-- Tarjeta de Confirmación de Cita -->
+        <div class="success-container">
             <div class="success-card">
-                <!-- icono para checar es el verde -->
+                
+                <!-- Círculo de Verificación con icono -->
                 <div class="check-circle">
-                    <i class='bx bx-check'></i>
+                    <i class="fa-solid fa-check"></i>
                 </div>
 
                 <h2>¡Cita agendada!</h2>
                 <p class="success-message">La cita ha sido registrada exitosamente.</p>
 
                 <!-- Botón Ir al Inicio -->
-                <a href="citas.html" class="btn-success">Mis citas</a>
-                <form class="formulario-grid" action="citaex.html"></form>
+                <a href="citas.html" class="btn-success">Mis Citas</a>
             </div>
-        </main>
-    </div>
+        </div>
+    </main>
 </div>
 
 </body>

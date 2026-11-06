@@ -1,0 +1,120 @@
+/* --- Estilos base y centrado de la vista de registro --- */
+body.auth-body {
+  margin: 0;
+  padding: 0;
+  background-color: #f7f1f2;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.auth-wrapper {
+  display: flex;
+  width: 950px;
+  max-width: 100%;
+  background-color: #f7f1f2;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Panel Izquierdo (Barra decorativa y logo) --- */
+.auth-sidebar {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f1f2;
+}
+
+.auth-sidebar .logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.auth-sidebar .logo-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  border-radius: 50%;
+}
+
+.auth-sidebar .logo-text h2 {
+  font-size: 1.6rem;
+  color: #4a2c31;
+  margin: 0 0 5px 0;
+}
+
+.auth-sidebar .logo-text span {
+  font-size: 0.9rem;
+  color: #8c7377;
+}
+
+/* --- Panel Derecho (Tarjeta Blanca con Formulario) --- */
+.auth-main {
+  flex: 1.2;
+  background-color: #ffffff;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-card h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.auth-subtitle {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+/* --- Campos y Botones del Formulario --- */
+.auth-form input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.btn-register {
+  width: 100%;
+  padding: 12px;
+  background-color: #8c4a53; /* Color vino corporativo */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-register:hover {
+  background-color: #723b43;
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.auth-footer a {
+  color: #8c4a53;
+  text-decoration: none;
+  font-weight: 600;
+}
